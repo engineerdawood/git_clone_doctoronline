@@ -1,0 +1,61 @@
+<!-- how to buld navigation button clicked page opened --->
+
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+
+Route::get('/gallery', function () {
+    return view('gallery');
+})->name('gallery');
+
+
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+
+
+
+secondly 
+
+ <a class="nav-link" href="{{route('gallery')}}">
+ <a class="nav-link" href="{{route('contact')}}">
+ <a class="nav-link" href="{{route('home')}}">
+
+
+
+<!-- how to buld navigation button clicked page opened --->
+csrf token must for making post request 
+<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+ <input type="hidden" name="_token" value="{{ csrf_token() }}">
+<!-- how to buld navigation button clicked page opened --->
+
+
+
+<!-- start of navigating after form submission -->
+in form write this 
+<form action="{{ route('patientlogin') }}" method="post">
+
+route should be like this 
+Route::post('/patientlogin', function () {
+    echo "patient login";
+    })->name('patientlogin');
+    
+<!-- end of navigation after form submision -->
+
+
+if u get error in controller 
+"Class App\Http\Controllers\Request does not exist"
+use this 
+use Illuminate\Http\Request;
